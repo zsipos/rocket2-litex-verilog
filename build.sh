@@ -3,6 +3,11 @@ set -e
 UPSTREAM=https://github.com/chipsalliance/rocket-chip
 RELEASE=v1.2.0
 
+BITS_TO_BUILD="32 64"
+MEMS_TO_BUILD="64 128 256"
+CFGS_TO_BUILD="LitexConfig LitexLinuxConfig LitexLinuxConfigDualCore LitexFullConfig"
+
+
 if [ "$ROCKET_IS_SUBMODULE" != "true" ] || [ ! -d rocket-chip ]
 then
 	rm -rf rocket-chip
@@ -20,17 +25,14 @@ ln -s ../../../../litex litex
 popd
 
 rm -rf rocket-chip/vsim/generated-src
-for CFG in LitexConfig LitexLinuxConfig LitexLinuxConfigDualCore LitexFullConfig
+for CFG in $CFGS_TO_BUILD
 do
-  for MEM in 64 128 256
+  for MEM in $MEMS_TO_BUILD
   do
-    for BITS in 32 64
+    for BITS in $BITS_TO_BUILD
     do
-      if [ $CFG != LitexFullConfig ] || [ $BITS != 32 ]
-      then
-        make -C rocket-chip/vsim verilog \
-          CONFIG=${CFG}${BITS}Mem${MEM} MODEL=LitexRocketSystem
-      fi
+      CONFIG=${CFG}${BITS}Mem${MEM}
+      make -C rocket-chip/vsim verilog CONFIG=$CONFIG MODEL=LitexRocketSystem
     done
   done
 done

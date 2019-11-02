@@ -85,14 +85,6 @@ class WithNMediumCores(n: Int) extends Config((site, here, up) => {
   }
 })
 
-class With64Bits extends Config((site, here, up) => {
-  case XLen => 64
-})
-
-class With32Bits extends Config((site, here, up) => {
-  case XLen => 32
-})
-
 class BaseLitexConfig extends Config(
   new WithLitexMMIOPort ++
   new WithNoSlavePort ++
@@ -104,50 +96,53 @@ class BaseLitexConfig extends Config(
 // memory width = 64
 
 class LitexConfig64Mem64 extends Config(
-  new With64Bits ++
   new WithNSmallCores(1) ++
   new WithLitexMemPortsMem64() ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfig64Mem64 extends Config(
-  new With64Bits ++
   new WithNMediumCores(1) ++
   new WithLitexMemPortsMem64 ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfigDualCore64Mem64 extends Config(
-  new With64Bits ++
   new WithNMediumCores(2) ++
   new WithLitexMemPortsMem64 ++
   new BaseLitexConfig
 )
 
 class LitexFullConfig64Mem64 extends Config(
-  new With64Bits ++
   new WithNBigCores(1) ++
   new WithLitexMemPortsMem64 ++
   new BaseLitexConfig
 )
 
 class LitexConfig32Mem64 extends Config(
-  new With32Bits ++
+  new WithRV32 ++
   new WithNSmallCores(1) ++
   new WithLitexMemPortsMem64 ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfig32Mem64 extends Config(
-  new With32Bits ++
+  new WithRV32 ++
   new WithNMediumCores(1) ++
   new WithLitexMemPortsMem64 ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfigDualCore32Mem64 extends Config(
-  new With32Bits ++
+  new WithRV32 ++
   new WithNMediumCores(2) ++
+  new WithLitexMemPortsMem64 ++
+  new BaseLitexConfig
+)
+
+class LitexFullConfig32Mem64 extends Config(
+  new WithRV32 ++
+  new WithNBigCores(1) ++
   new WithLitexMemPortsMem64 ++
   new BaseLitexConfig
 )
@@ -155,50 +150,53 @@ class LitexLinuxConfigDualCore32Mem64 extends Config(
 // memory width = 128
 
 class LitexConfig64Mem128 extends Config(
-  new With64Bits ++
   new WithNSmallCores(1) ++
   new WithLitexMemPortsMem128() ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfig64Mem128 extends Config(
-  new With64Bits ++
   new WithNMediumCores(1) ++
   new WithLitexMemPortsMem128 ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfigDualCore64Mem128 extends Config(
-  new With64Bits ++
   new WithNMediumCores(1) ++
   new WithLitexMemPortsMem128 ++
   new BaseLitexConfig
 )
 
 class LitexFullConfig64Mem128 extends Config(
-  new With64Bits ++
   new WithNBigCores(1) ++
   new WithLitexMemPortsMem128 ++
   new BaseLitexConfig
 )
 
 class LitexConfig32Mem128 extends Config(
-  new With32Bits ++
+  new WithRV32 ++
   new WithNSmallCores(1) ++
   new WithLitexMemPortsMem128 ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfig32Mem128 extends Config(
-  new With32Bits ++
+  new WithRV32 ++
   new WithNMediumCores(1) ++
   new WithLitexMemPortsMem128 ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfigDualCore32Mem128 extends Config(
-  new With32Bits ++
+  new WithRV32 ++
   new WithNMediumCores(2) ++
+  new WithLitexMemPortsMem128 ++
+  new BaseLitexConfig
+)
+
+class LitexFullConfig32Mem128 extends Config(
+  new WithRV32 ++
+  new WithNBigCores(1) ++
   new WithLitexMemPortsMem128 ++
   new BaseLitexConfig
 )
@@ -206,50 +204,54 @@ class LitexLinuxConfigDualCore32Mem128 extends Config(
 // memory width = 256
 
 class LitexConfig64Mem256 extends Config(
-  new With64Bits ++
   new WithNSmallCores(1) ++
   new WithLitexMemPortsMem256() ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfig64Mem256 extends Config(
-  new With64Bits ++
   new WithNMediumCores(1) ++
   new WithLitexMemPortsMem256 ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfigDualCore64Mem256 extends Config(
-  new With64Bits ++
   new WithNMediumCores(2) ++
   new WithLitexMemPortsMem256 ++
   new BaseLitexConfig
 )
 
 class LitexFullConfig64Mem256 extends Config(
-  new With64Bits ++
   new WithNBigCores(1) ++
   new WithLitexMemPortsMem256 ++
   new BaseLitexConfig
 )
 
 class LitexConfig32Mem256 extends Config(
-  new With32Bits ++
+  new WithRV32 ++
   new WithNSmallCores(1) ++
   new WithLitexMemPortsMem256 ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfig32Mem256 extends Config(
-  new With32Bits ++
+  new WithRV32 ++
   new WithNMediumCores(1) ++
   new WithLitexMemPortsMem256 ++
   new BaseLitexConfig
 )
 
 class LitexLinuxConfigDualCore32Mem256 extends Config(
-  new With32Bits ++
+  new WithRV32 ++
   new WithNMediumCores(2) ++
   new WithLitexMemPortsMem256 ++
   new BaseLitexConfig
 )
+
+class LitexFullConfig32Mem256 extends Config(
+  new WithRV32 ++
+  new WithNBigCores(1) ++
+  new WithLitexMemPortsMem256 ++
+  new BaseLitexConfig
+)
+
