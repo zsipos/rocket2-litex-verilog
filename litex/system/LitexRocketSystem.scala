@@ -73,6 +73,7 @@ class LitexRocketSystem(implicit p: Parameters) extends RocketSubsystem
     with CanHaveMasterAXI4MemPort
     with CanHaveMasterAXI4MemPort2
     with CanHaveMasterAXI4MMIOPort
+    with CanHaveSlaveAXI4Port
 {
   override lazy val module = new LitexRocketSystemModuleImp(this)
 }
@@ -83,6 +84,7 @@ class LitexRocketSystemModuleImp[+L <: LitexRocketSystem](_outer: L) extends Roc
     with CanHaveMasterAXI4MemPortModuleImp
     with CanHaveMasterAXI4MemPort2ModuleImp
     with CanHaveMasterAXI4MMIOPortModuleImp
+    with CanHaveSlaveAXI4PortModuleImp
     with DontTouch
 {
   //ExtMem maps to litex bios

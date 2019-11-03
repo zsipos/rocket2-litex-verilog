@@ -63,6 +63,10 @@ class WithLitexMMIOPort extends Config((site, here, up) => {
     idBits = 4))
 })
 
+class WithLitexSlavePort extends Config((site, here, up) => {
+  case ExtIn  => Some(SlavePortParams(beatBytes = 4, idBits = 4, sourceBits = 4))
+})
+
 class WithNMediumCores(n: Int) extends Config((site, here, up) => {
   case RocketTilesKey => {
     val med = RocketTileParams(
@@ -87,7 +91,7 @@ class WithNMediumCores(n: Int) extends Config((site, here, up) => {
 
 class BaseLitexConfig extends Config(
   new WithLitexMMIOPort ++
-  new WithNoSlavePort ++
+  new WithLitexSlavePort ++
   new WithNExtTopInterrupts(8) ++
   new WithoutTLMonitors ++
   new BaseConfig
