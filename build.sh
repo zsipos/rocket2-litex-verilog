@@ -10,12 +10,12 @@ CFGS_TO_BUILD="LitexConfig LitexLinuxConfig LitexLinuxConfigDualCore LitexFullCo
 
 if [ "$ROCKET_IS_SUBMODULE" != "true" ] || [ ! -d rocket-chip ]
 then
-	rm -rf rocket-chip
-	git clone --recursive $UPSTREAM
-	pushd rocket-chip
-	git checkout $RELEASE
-	git submodule update --init --recursive
-	popd
+  rm -rf rocket-chip
+  git clone --recursive $UPSTREAM
+  pushd rocket-chip
+  git checkout $RELEASE
+  git submodule update --init --recursive
+ popd
 fi
 
 SCALASRC=rocket-chip/src/main/scala
