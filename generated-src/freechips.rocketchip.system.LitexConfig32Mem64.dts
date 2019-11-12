@@ -5,7 +5,7 @@
 	#size-cells = <1>;
 	compatible = "freechips,rocketchip-unknown-dev";
 	model = "freechips,rocketchip-unknown";
-	L13: cpus {
+	L12: cpus {
 		#address-cells = <1>;
 		#size-cells = <0>;
 		L6: cpu@0 {
@@ -19,7 +19,7 @@
 			i-cache-block-size = <64>;
 			i-cache-sets = <64>;
 			i-cache-size = <4096>;
-			next-level-cache = <&L8 &L9>;
+			next-level-cache = <&L8>;
 			reg = <0x0>;
 			riscv,isa = "rv32imac";
 			riscv,pmpregions = <8>;
@@ -32,15 +32,11 @@
 			};
 		};
 	};
-	L8: memory@10000000 {
-		device_type = "memory";
-		reg = <0x10000000 0x2000000>;
-	};
-	L9: memory@80000000 {
+	L8: memory@80000000 {
 		device_type = "memory";
 		reg = <0x80000000 0x80000000>;
 	};
-	L12: soc {
+	L11: soc {
 		#address-cells = <1>;
 		#size-cells = <1>;
 		compatible = "freechips,rocketchip-unknown-soc", "simple-bus";
@@ -75,11 +71,11 @@
 			riscv,max-priority = <7>;
 			riscv,ndev = <8>;
 		};
-		L10: mmio-port-axi4@12000000 {
+		L9: mmio-port-axi4@10000000 {
 			#address-cells = <1>;
 			#size-cells = <1>;
 			compatible = "simple-bus";
-			ranges = <0x12000000 0x12000000 0x6e000000>;
+			ranges = <0x10000000 0x10000000 0x70000000>;
 		};
 	};
 };

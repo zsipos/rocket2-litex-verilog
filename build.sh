@@ -15,7 +15,7 @@ then
   pushd rocket-chip
   git checkout $RELEASE
   git submodule update --init --recursive
- popd
+  popd
 fi
 
 SCALASRC=rocket-chip/src/main/scala
