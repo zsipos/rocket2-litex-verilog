@@ -4,14 +4,9 @@
 package freechips.rocketchip.system
 
 import Chisel._
-import chipsalliance.rocketchip.config.Field
-import freechips.rocketchip.amba.axi4.{AXI4IdIndexer, AXI4SlaveNode, AXI4SlaveParameters, AXI4SlavePortParameters, AXI4UserYanker}
 import freechips.rocketchip.config.Parameters
-import freechips.rocketchip.diplomacy._
 import freechips.rocketchip.subsystem._
-import freechips.rocketchip.devices.tilelink._
-import freechips.rocketchip.tilelink.TLToAXI4
-import freechips.rocketchip.util.{DontTouch, HeterogeneousBag}
+import freechips.rocketchip.util.DontTouch
 
 /** Example Top with periphery devices and ports, and a Rocket subsystem */
 class LitexRocketSystem(implicit p: Parameters) extends RocketSubsystem

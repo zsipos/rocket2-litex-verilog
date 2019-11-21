@@ -4,11 +4,11 @@
 package freechips.rocketchip.system
 
 import Chisel._
-import freechips.rocketchip.config.Config
+import freechips.rocketchip.config._
 import freechips.rocketchip.subsystem._
 import freechips.rocketchip.diplomacy._
 import freechips.rocketchip.rocket.{DCacheParams, ICacheParams, MulDivParams, RocketCoreParams}
-import freechips.rocketchip.tile.{RocketTileParams, XLen}
+import freechips.rocketchip.tile.{RocketTileParams}
 
 /* widening the internal memory bus costs more fpga resources and benchmarks equal..
 
@@ -67,10 +67,12 @@ class WithNMediumCores(n: Int) extends Config((site, here, up) => {
   }
 })
 
+
 class BaseLitexConfig extends Config(
   new WithLitexIOPort(4) ++
   new WithLitexSlavePort(4) ++
   new WithNExtTopInterrupts(8) ++
+  new WithJtagDTM ++
   new WithoutTLMonitors ++
   new BaseConfig
 )
