@@ -71,7 +71,7 @@ class WithNMediumCores(n: Int) extends Config((site, here, up) => {
 class BaseLitexConfig extends Config(
   new WithLitexIOPort(4) ++
   new WithLitexSlavePort(4) ++
-  new WithNExtTopInterrupts(8) ++
+  new WithNExtTopInterrupts(16) ++
   new WithJtagDTM ++
   new WithoutTLMonitors ++
   new BaseConfig
@@ -146,7 +146,7 @@ class LitexLinuxConfig64Mem128 extends Config(
 )
 
 class LitexLinuxConfigDualCore64Mem128 extends Config(
-  new WithNMediumCores(1) ++
+  new WithNMediumCores(2) ++
   new WithLitexMemPort(16) ++
   new BaseLitexConfig
 )
